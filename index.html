@@ -385,6 +385,83 @@
       color: #333;
     }
 
+    /* ─── Hamburger Button ──────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 300;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2.5px;
+      background: #1e3a6e;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ×アイコンに変形 */
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    /* ─── Mobile Nav Drawer ──────────────────────── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 260px;
+      height: 100%;
+      background: #1e3a6e;
+      z-index: 250;
+      flex-direction: column;
+      padding: 88px 40px 40px;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-nav.open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav a {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 18px;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: #e8601c;
+    }
+
+    /* ドロワー背景オーバーレイ */
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 240;
+    }
+
+    .nav-overlay.open {
+      display: block;
+    }
+
     /* ─── Footer：紺色 ──────────────────────────── */
     footer {
       background: #1e3a6e;
@@ -431,9 +508,155 @@
       border-top: 1px solid rgba(255, 255, 255, 0.15);
       padding-top: 16px;
     }
+
+    /* ═══════════════════════════════════════════════
+       Mobile Responsive  (〜767px)
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      /* ─── Header ─── */
+      header {
+        padding: 14px 20px;
+      }
+
+      header nav {
+        display: none; /* デスクトップナビを隠す */
+      }
+
+      .hamburger {
+        display: flex; /* ハンバーガー表示 */
+      }
+
+      .mobile-nav {
+        display: flex; /* ドロワー有効化 */
+      }
+
+      /* ─── Hero ─── */
+      .hero {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .hero-left {
+        width: 100%;
+        padding: 44px 28px;
+      }
+
+      .hero-text h1 {
+        font-size: 22px;
+      }
+
+      .hero-right {
+        width: 100%;
+        height: 220px;
+      }
+
+      /* ─── Section Title ─── */
+      .section-title {
+        margin-bottom: 28px;
+      }
+
+      /* ─── Service ─── */
+      #service {
+        padding: 52px 20px;
+      }
+
+      .service-grid {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .service-card .card-img {
+        width: 160px;
+        height: 160px;
+      }
+
+      /* ─── Company ─── */
+      #company {
+        padding: 52px 20px;
+      }
+
+      .vision-card {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .vision-card .vision-img {
+        width: 160px;
+        margin: 0 auto;
+      }
+
+      .vision-card p {
+        text-align: left;
+      }
+
+      .rep-card {
+        flex-direction: column;
+        padding: 28px 24px;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .rep-bio {
+        order: 2;
+      }
+
+      .rep-profile {
+        order: 1;
+      }
+
+      .overview-card {
+        padding: 28px 20px;
+      }
+
+      .overview-table td {
+        font-size: 14px;
+        padding: 10px 6px;
+      }
+
+      .overview-table td:first-child {
+        width: 80px;
+      }
+
+      /* ─── Footer ─── */
+      footer {
+        padding: 32px 20px 16px;
+      }
+
+      .footer-main {
+        flex-direction: column-reverse;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      footer nav {
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      footer nav a {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ドロワー背景オーバーレイ -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- モバイルナビ ドロワー -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#service" class="nav-link-sp">Service</a>
+    <a href="#company" class="nav-link-sp">Company</a>
+    <a href="#contact" class="nav-link-sp">Contact</a>
+  </nav>
 
   <!-- ═══════════ Header ═══════════ -->
   <header>
@@ -445,6 +668,12 @@
       <a href="#company">Company</a>
       <a href="#contact">Contact</a>
     </nav>
+    <!-- ハンバーガーボタン（モバイルのみ表示） -->
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <!-- ═══════════ Hero ═══════════ -->
@@ -602,5 +831,36 @@
     </div>
   </footer>
 
+  <script>
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobileNav');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      mobileNav.classList.add('open');
+      navOverlay.classList.add('open');
+      hamburger.setAttribute('aria-label', 'メニューを閉じる');
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      navOverlay.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'メニューを開く');
+    }
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    /* オーバーレイをタップで閉じる */
+    navOverlay.addEventListener('click', closeMenu);
+
+    /* ナビリンクをタップしたら閉じる */
+    document.querySelectorAll('.nav-link-sp').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
 </body>
 </html>
