@@ -68,15 +68,14 @@
     .hero-text {
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 80%;
+      left: 8%;
+      transform: translateY(-50%);
+      text-align: left;
       white-space: nowrap;
     }
 
     .hero-text h1 {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 900;
       color: #fff;
       line-height: 1.7;
@@ -526,9 +525,30 @@
       }
 
       /* ─── Hero ─── */
-      .hero-text h1 {
-        font-size: 18px;
+      .hero-text {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
       }
+
+      .hero-text h1 {
+        font-size: 20px; /* +1サイズ */
+      }
+
+      /* ─── その他テキスト（全体 -1サイズ = -2px）─── */
+      .mobile-nav a         { font-size: 18px; }
+      .section-title h2     { font-size: 23px; }
+      .service-card h3      { font-size: 17px; }
+      .service-card p       { font-size: 13px; }
+      .btn-more             { font-size: 13px; }
+      .vision-card h3       { font-size: 19px; }
+      .vision-card p        { font-size: 14px; }
+      .rep-bio .rep-label   { font-size: 17px; }
+      .rep-bio p            { font-size: 13px; }
+      .rep-profile .rep-name { font-size: 12px; }
+      .overview-card h3     { font-size: 17px; }
+      footer nav a          { font-size: 12px; }
+      .footer-copyright     { font-size: 11px; }
 
       /* ─── Section Title ─── */
       .section-title {
@@ -591,7 +611,7 @@
       }
 
       .overview-table td {
-        font-size: 14px;
+        font-size: 12px; /* -1サイズ */
         padding: 10px 6px;
       }
 
