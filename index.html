@@ -50,26 +50,18 @@
       color: #e8601c;
     }
 
-    /* ─── Hero（二分割レイアウト）──────────────── */
+    /* ─── Hero（アイキャッチ＋テキスト重ね）────── */
     .hero {
-      display: flex;
-      height: 440px;
-      overflow: hidden;
-    }
-
-    /* 左：HP-background.png ＋ テキスト重ね */
-    .hero-left {
-      width: 50%;
-      flex-shrink: 0;
       position: relative;
-      overflow: hidden;
     }
 
-    .hero-left-bg {
+    .hero-inner {
+      position: relative;
+      line-height: 0; /* 画像下の余白を消す */
+    }
+
+    .hero-eyecatch {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
       display: block;
     }
 
@@ -79,29 +71,16 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      width: 82%;
+      width: 80%;
+      white-space: nowrap;
     }
 
     .hero-text h1 {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 900;
       color: #fff;
       line-height: 1.7;
       letter-spacing: 0.02em;
-    }
-
-    /* 右：オフィス写真 */
-    .hero-right {
-      flex: 1;
-      overflow: hidden;
-    }
-
-    .hero-right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
     }
 
     /* ─── Section Title ─────────────────────────── */
@@ -547,23 +526,8 @@
       }
 
       /* ─── Hero ─── */
-      .hero {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .hero-left {
-        width: 100%;
-        height: 260px;
-      }
-
       .hero-text h1 {
-        font-size: 20px;
-      }
-
-      .hero-right {
-        width: 100%;
-        height: 220px;
+        font-size: 18px;
       }
 
       /* ─── Section Title ─── */
@@ -693,17 +657,15 @@
 
   <!-- ═══════════ Hero ═══════════ -->
   <section class="hero">
-    <!-- 左：背景画像＋テキスト -->
-    <div class="hero-left">
-      <img src="images/HP-background.png" alt="" class="hero-left-bg">
+    <div class="hero-inner">
+      <!-- PC: eyecatch1.png / スマホ: eyecatch2.png -->
+      <picture>
+        <source media="(max-width: 767px)" srcset="images/eyecatch2.png">
+        <img src="images/eyecatch1.png" alt="アイキャッチ画像" class="hero-eyecatch">
+      </picture>
       <div class="hero-text">
         <h1>個人のWillと組織のWillが<br>両立する社会を実現する</h1>
       </div>
-    </div>
-    <!-- 右：オフィス写真 -->
-    <div class="hero-right">
-      <img src="images/Gemini_Generated_Image_jjt5jnjjt5jnjjt5.png"
-           alt="オフィスで働くチームの写真">
     </div>
   </section>
 
