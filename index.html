@@ -50,19 +50,37 @@
       color: #e8601c;
     }
 
-    /* ─── Hero（アイキャッチ＋テキスト重ね）────── */
+    /* ─── Hero（写真＋グラデーションオーバーレイ）─ */
     .hero {
       position: relative;
     }
 
     .hero-inner {
       position: relative;
-      line-height: 0; /* 画像下の余白を消す */
+      line-height: 0;
     }
 
     .hero-eyecatch {
       width: 100%;
       display: block;
+      max-height: 440px;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    /* 紺→透明のグラデーションオーバーレイ（PC用） */
+    .hero-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(30, 58, 110, 0.96) 0%,
+        rgba(30, 58, 110, 0.90) 25%,
+        rgba(30, 58, 110, 0.50) 52%,
+        rgba(30, 58, 110, 0.00) 72%
+      );
+      pointer-events: none;
     }
 
     .hero-text {
@@ -72,6 +90,7 @@
       transform: translateY(-50%);
       text-align: left;
       white-space: nowrap;
+      z-index: 1;
     }
 
     .hero-text h1 {
@@ -525,6 +544,16 @@
       }
 
       /* ─── Hero ─── */
+      /* SP は eyecatch2.png にデザイン込みのためオーバーレイ不要 */
+      .hero-inner::after {
+        display: none;
+      }
+
+      .hero-eyecatch {
+        max-height: none;
+        object-fit: unset;
+      }
+
       .hero-text {
         left: 50%;
         transform: translate(-50%, -50%);
@@ -532,7 +561,7 @@
       }
 
       .hero-text h1 {
-        font-size: 20px; /* +1サイズ */
+        font-size: 20px;
       }
 
       /* ─── その他テキスト（全体 -1サイズ = -2px）─── */
@@ -678,10 +707,10 @@
   <!-- ═══════════ Hero ═══════════ -->
   <section class="hero">
     <div class="hero-inner">
-      <!-- PC: eyecatch1.png / スマホ: eyecatch2.png -->
+      <!-- PC: Gemini写真＋CSSオーバーレイ / スマホ: eyecatch2.png -->
       <picture>
         <source media="(max-width: 767px)" srcset="images/eyecatch2.png">
-        <img src="images/eyecatch1.png" alt="アイキャッチ画像" class="hero-eyecatch">
+        <img src="images/Gemini_Generated_Image_jjt5jnjjt5jnjjt5.png" alt="オフィスで働くチームの写真" class="hero-eyecatch">
       </picture>
       <div class="hero-text">
         <h1>個人のWillと組織のWillが<br>両立する社会を実現する</h1>
