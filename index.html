@@ -50,19 +50,26 @@
       color: #e8601c;
     }
 
-    /* ─── Hero ────────────────────────────────── */
+    /* ─── Hero（二分割レイアウト）──────────────── */
     .hero {
-      background: #fff;
-      position: relative;
+      display: flex;
+      height: 440px;
+      overflow: hidden;
     }
 
-    .hero-inner {
+    /* 左：HP-background.png ＋ テキスト重ね */
+    .hero-left {
+      width: 50%;
+      flex-shrink: 0;
       position: relative;
-      line-height: 0; /* 画像下の隙間を消す */
+      overflow: hidden;
     }
 
-    .hero-bg-img {
+    .hero-left-bg {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
       display: block;
     }
 
@@ -72,15 +79,29 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
-      width: 70%;
+      width: 82%;
     }
 
     .hero-text h1 {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       color: #fff;
       line-height: 1.7;
       letter-spacing: 0.02em;
+    }
+
+    /* 右：オフィス写真 */
+    .hero-right {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
     }
 
     /* ─── Section Title ─────────────────────────── */
@@ -526,8 +547,23 @@
       }
 
       /* ─── Hero ─── */
+      .hero {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .hero-left {
+        width: 100%;
+        height: 260px;
+      }
+
       .hero-text h1 {
-        font-size: 18px;
+        font-size: 20px;
+      }
+
+      .hero-right {
+        width: 100%;
+        height: 220px;
       }
 
       /* ─── Section Title ─── */
@@ -657,11 +693,17 @@
 
   <!-- ═══════════ Hero ═══════════ -->
   <section class="hero">
-    <div class="hero-inner">
-      <img src="images/HP-background.png" alt="" class="hero-bg-img">
+    <!-- 左：背景画像＋テキスト -->
+    <div class="hero-left">
+      <img src="images/HP-background.png" alt="" class="hero-left-bg">
       <div class="hero-text">
         <h1>個人のWillと組織のWillが<br>両立する社会を実現する</h1>
       </div>
+    </div>
+    <!-- 右：オフィス写真 -->
+    <div class="hero-right">
+      <img src="images/Gemini_Generated_Image_jjt5jnjjt5jnjjt5.png"
+           alt="オフィスで働くチームの写真">
     </div>
   </section>
 
