@@ -136,44 +136,43 @@
     .coming-soon-card {
       background: #fff;
       border-radius: 24px;
-      padding: 64px 80px;
       max-width: 680px;
       width: 100%;
       text-align: center;
       box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+      overflow: hidden; /* 画像を角丸に合わせてクリップ */
     }
 
-    /* AnyFlag 2×2 ブランドアイコン */
-    .brand-icon {
-      display: inline-grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7px;
-      margin-bottom: 32px;
+    /* 上部：アイキャッチ画像 ＋ バッジ重ね */
+    .eyecatch-wrap {
+      position: relative;
+      line-height: 0;
     }
 
-    .brand-icon span {
-      width: 30px;
-      height: 30px;
-      border-radius: 3px;
+    .card-eyecatch {
+      width: 100%;
       display: block;
     }
 
-    .brand-icon span:nth-child(1) { background: #1e3a6e; }
-    .brand-icon span:nth-child(2) { background: #e8601c; }
-    .brand-icon span:nth-child(3) { background: #e8601c; }
-    .brand-icon span:nth-child(4) { background: #1e3a6e; }
-
-    /* COMING SOON バッジ */
+    /* COMING SOON バッジ（画像中央に絶対配置） */
     .badge {
-      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: #e8601c;
       color: #fff;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.15em;
-      padding: 5px 18px;
+      padding: 8px 24px;
       border-radius: 999px;
-      margin-bottom: 28px;
+      white-space: nowrap;
+    }
+
+    /* 下部：テキストコンテンツ */
+    .card-body {
+      padding: 40px 80px 60px;
     }
 
     .coming-soon-card h1 {
@@ -299,8 +298,8 @@
         align-items: flex-start;
       }
 
-      .coming-soon-card {
-        padding: 40px 28px;
+      .card-body {
+        padding: 28px 24px 40px;
       }
 
       .coming-soon-card h1 {
@@ -369,27 +368,27 @@
   <main>
     <div class="coming-soon-card">
 
-      <!-- AnyFlag ブランドアイコン -->
-      <div class="brand-icon">
-        <span></span><span></span>
-        <span></span><span></span>
+      <!-- 上部：アイキャッチ画像 ＋ COMING SOON バッジ -->
+      <div class="eyecatch-wrap">
+        <img src="../images/eyecatch2.png" alt="採用コンサルティング" class="card-eyecatch">
+        <div class="badge">COMING SOON</div>
       </div>
 
-      <!-- バッジ -->
-      <div class="badge">COMING SOON</div>
+      <!-- 下部：テキストコンテンツ -->
+      <div class="card-body">
+        <h1>採用コンサルティング</h1>
 
-      <h1>採用コンサルティング</h1>
+        <p class="message">このページは現在準備中です。</p>
+        <p class="sub">
+          サービスの詳細については近日公開予定です。<br>
+          もうしばらくお待ちください。
+        </p>
 
-      <p class="message">このページは現在準備中です。</p>
-      <p class="sub">
-        サービスの詳細については近日公開予定です。<br>
-        もうしばらくお待ちください。
-      </p>
-
-      <a href="../index.html" class="btn-back">
-        トップページへ戻る
-        <span class="arrow-circle">→</span>
-      </a>
+        <a href="../index.html" class="btn-back">
+          トップページへ戻る
+          <span class="arrow-circle">→</span>
+        </a>
+      </div>
 
     </div>
   </main>
